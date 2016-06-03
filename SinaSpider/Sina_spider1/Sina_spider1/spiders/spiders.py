@@ -10,7 +10,7 @@ class Spider(CrawlSpider):
     name = "sinaSpider"
     host = "http://weibo.cn"
     start_urls = [
-        3217179555, 3217179555,
+       1808624312, 1808624312,
     ]
     scrawl_ID = set(start_urls)  # 记录待爬的微博ID
     finish_ID = set()  # 记录已爬的微博ID
@@ -20,7 +20,7 @@ class Spider(CrawlSpider):
             ID = self.scrawl_ID.pop()
             self.finish_ID.add(ID)  # 加入已爬队列
             ID = str(ID)
-            url_tweets = "http://weibo.cn/%s/profile?filter=0&page=328&is_all=1" % ID
+            url_tweets = "http://weibo.cn/%s/profile?filter=0&page=1&is_all=1" % ID
             yield Request(url=url_tweets, meta={"ID": ID}, callback=self.parse2)  # 去爬微博
 
     def parse2(self, response):
@@ -38,6 +38,8 @@ class Spider(CrawlSpider):
             tweetsItems["_id"] = response.meta["ID"] + "-" + id
             if content:
                 tweetsItems["Content"] = content.strip(u"[\u4f4d\u7f6e]")  # 去掉最后的"[位置]"
+            else:
+                tweetsItems["Content"] = u""
             if others:
                 others = others.split(u"\u6765\u81ea")
                 tweetsItems["PubTime"] = others[0]
