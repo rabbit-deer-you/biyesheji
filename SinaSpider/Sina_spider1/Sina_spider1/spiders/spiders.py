@@ -10,7 +10,7 @@ class Spider(CrawlSpider):
     name = "sinaSpider"
     host = "http://weibo.cn"
     start_urls = [
-       1808624312, 1808624312,
+       2113404973, 2113404973,
     ]
     scrawl_ID = set(start_urls)  # 记录待爬的微博ID
     finish_ID = set()  # 记录已爬的微博ID

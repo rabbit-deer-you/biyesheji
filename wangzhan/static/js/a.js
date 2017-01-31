@@ -3,7 +3,32 @@ var data2=[];
 var option={};	
 var ID= document.getElementById("getid").getAttribute("data");
 var tool = echarts.init(document.getElementById("tool"));
-var month = echarts.init(document.getElementById("month"))
+var month = echarts.init(document.getElementById("month"));
+var tuijian = document.getElementById("tuijian");
+var user = [];
+user["1887683497"] = "平安哈尔滨";
+user["2466412043"] = "新浪哈尔滨旅游";
+user["1688383542"] = "哈尔滨身边事";
+user["2477971432"] = "微博动漫";
+user["1748075785"] = "哔哩哔哩弹幕网";
+user["2410626252"] =   "AcFun弹幕视频网";
+user["1263498570"] = "黄渤";
+user["5187664653"] = "邓超";  
+user["1751675285"] = "岳云鹏"; 
+user["1854283601"] = "郭德纲"; 
+user["2803301701"] = "人民日报"; 
+user["2656274875"] = "央视新闻"; 
+user["1826792401"] = "王思聪"; 
+user["2714280233"] = "papi酱"; 
+user["1563926367"] = "天才小熊猫"; 
+user["2477339061"] = "艾克里里"; 
+user["3217179555"] = "回忆专用小马甲"; 
+user["1691761292"] = "叫兽易小星"; 
+user["1742121542"] = "八卦我实在是太CJ了";   
+user["1659041705"] = "穆雅斓"; 
+user["1549362863"] = "张大奕eve"; 
+user["1808624312"] = "章泽天"; 
+
 	        // 指定图表的配置项和数据
 $.ajax({
 	dataType:"json",
@@ -192,7 +217,16 @@ function wordMonth(str){
 			"keyword":"%27"+str+"%27"
 		},
 		success:function(data){
-
+			tuijian.innerHTML = ""
+			for(var i=0;i<data.length;i++){
+				tuijian.innerHTML = tuijian.innerHTML+user[data[i]];
+				if(i !== data.length-1){
+					tuijian.innerHTML+=","
+				}
+			}
 		}
 	});
+	document.getElementById("similar").style.display = "block";
 }
+
+document.getElementById("content_title").innerHTML += user[ID];

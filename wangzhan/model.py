@@ -55,7 +55,7 @@ def getkeyword_month(id,type,keyword):
 def getsimilar(id,keyword):
 	result = []
 	keyword = unquote(keyword)
-	data  = db.query('select * from tuijian where KeyWord = %s and tuijian.id not in (%s)' % (keyword,id))
+	data  = db.query('select * from tuijian where KeyWord = %s and tuijian.id not in ("%s")' % (keyword,id))
 	for m in data:
 		result.append(m.id)
 	return json.dumps(result)

@@ -1,6 +1,7 @@
 $def with(header,footer,id)
 $:header
 	<div class="col-lg-12">
+	<h1 id="content_title">微博用户名：</h1>
                    <ul id="myTab" class="nav nav-tabs">
                        <li class="active">
                            <a href="#word" data-toggle="tab">微博关键词词云</a>
@@ -17,7 +18,11 @@ $:header
                         <div id="getid" data="$id" style="display: none;"></div>
                        <div class="tab-pane fade in active" id="word">词云
                                 <div id="cloud" style="width: 500px; height: 500px; border: 1px solid black;"></div>
-                                <div id="tuijian"></div>
+                                <div id="similar"style="display: none;">
+                                <h2>推荐的相似用户</h2>
+                                <div id="tuijian" class="tuijian" style="font-size:20px;"></div>
+                                </div>
+                                </br> </br> </br>
                                 <div id="word_month" style="width: 1000px;height:400px;"></div> 
                        </div>
                        <div class="tab-pane fade" id="planet">平台统计
